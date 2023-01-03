@@ -6,5 +6,9 @@ $string = "Web Code Geeks";
 $array = array("Pineapple", "Grapefruit", "Banana");
 
 echo "My data : " . $boolean ."<br>";
+echo "My data : " . $doubleNum ."<br>";
+echo "My data : " . $boolean ."<br>";
+echo "My data : " . $boolean ."<br>";
+echo "My data : " . $boolean ."<br>";
 echo "My data array : " . $array[0];
  ?>
