@@ -69,15 +69,19 @@
                 ),
             );
         echo "P2E5 Student place of birth : " . $info['address']['pob'];
-
-
         ?>
-    <form action="">
-        <select>
-            <?php   for($i=0;$i<3;$i++){//start;stop;step?>
-            <option value="<?php echo $schools[$i]; ?>"><?php echo $school[$i]; ?></option>
-            <?php }?>
-        </select>
-    </form>
+
+    <?php
+    //function functionName(have/don't have parameters){ return/no return}
+      function fact($n){
+          $fac = 1;
+          for ($i=1;$i<=$n;$i++){
+              $fac = $fac * $i;
+          }
+          return $fac;
+      }
+      $n = 5;
+      echo "Value of factorial of " .$n . "is " .fact($n);
+    ?>
 </body>
 </html>
