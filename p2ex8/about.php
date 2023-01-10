@@ -11,12 +11,13 @@
 <body>
 
 <?php
-require "nav.php";
-echo "Next Process";
+include "nav.php";
+
 ?>
 
+
 <div class="container">
-    <h3>Home</h3>
+    <h3>About</h3>
     <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
 </div>
 
