@@ -56,7 +56,22 @@
         echo "Student Gender:" . $myJsonDataStu->gender . "<br>";
         echo "Student Place Of Birth:" . $myJsonDataStu->address->pob . "<br>";
         echo "Student Current Address:" . $myJsonDataStu->address->current . "<br>";
-   ?>
+
+        //Answer P2E5
+        $info = array(
+            "name"=> "Mr. SOK SAN",
+            "id"=> "IDTB2022001",
+            "gender"=> "Male",
+            "address"=>
+                array(
+                "pob"=> "Prey Veng",
+                "current"=> "Phnom Penh"
+                ),
+            );
+        echo "P2E5 Student place of birth : " . $info['address']['pob'];
+
+
+        ?>
     <form action="">
         <select>
             <?php   for($i=0;$i<3;$i++){//start;stop;step?>
