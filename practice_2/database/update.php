@@ -1,15 +1,14 @@
 <?php
-
 include_once 'db.php';
 $firstname = $_POST['first_name'];
 $lastname = $_POST['last_name'];
-$mobile = '9874561230';
-$pod = 'Phnom Penh';
-$age = 20;
-$dob = '200-12-30';
-$salary = 500.00;
+$mobile = $_POST['tel'];
+$pod = $_POST['pob'];
+$age = $_POST['age'];
+$dob = $_POST['dob'];
 $isDeleted = 0;
-$description = "sfdsfds";
+$salary = $_POST['salary'];
+$description = $_POST['description'];
 $id = $_POST['id'];
 
 $sql = "UPDATE users SET 
@@ -33,7 +32,6 @@ else
 {
     echo "Data successfully updated";
 }
-
 mysqli_close($conn);
 $newURL = "select.php";
 header('Location: '.$newURL);

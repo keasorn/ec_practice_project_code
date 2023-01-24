@@ -1,3 +1,20 @@
+<?php
+include_once 'db.php';
+$sql = "SELECT * FROM users where id=".$_GET['id'];
+
+$conn = isset($conn) ? $conn : null;
+$query = mysqli_query($conn, $sql);
+$data = mysqli_fetch_array($query);
+$fName = $data['first_name'];
+$lName = $data['last_name'];
+$tel = $data['tel'];
+$age = $data['age'];
+$pob = $data['pob'];
+$salary = $data['salary'];
+$dob = $data['dob'];
+$description = $data['description'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,65 +26,48 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<?php
-/**
- *  @property $conn
- */
-?>
-<a href="user.php">Create New <Br></a>
-<?php
-include_once 'db.php';
 
-$sql = "SELECT * FROM users WHERE id  = ".$_GET['id'];
-
-$conn = isset($conn)?$conn:null;
-$query = mysqli_query($conn,$sql);
-$data = mysqli_fetch_array($query);
-$id = $data['id'];
-$fName = $data['first_name'];
-$lName = $data['last_name'];
-?>
 <div class="container">
     <a href="select.php">View All User</a>
-    <h2>USER FORM</h2>
+    <h2>EDIT USER FORM</h2>
     <form class="form-horizontal" action="update.php" method="POST">
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">First Name:</label>
             <div class="col-sm-10">
-                <input type="text" value="<?php echo $fName;?>" class="form-control" id="first_name" placeholder="Enter First Name" name="first_name">
+                <input type="text" class="form-control" value="<?=$fName?>" id="first_name" placeholder="Enter First Name" name="first_name">
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-sm-2" for="email">Last Name:</label>
+            <label class="control-label col-sm-2"   for="email">Last Name:</label>
             <div class="col-sm-10">
-                <input type="text"  value="<?php echo $lName;?>" class="form-control" id="last_name" placeholder="Enter Last Name" name="last_name">
+                <input type="text" class="form-control" value="<?=$lName?>" id="last_name" placeholder="Enter Last Name" name="last_name">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Phone Number:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="tel"  name="tel">
+                <input type="text" class="form-control" value="<?=$tel?>" id="tel"  name="tel">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Age:</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" id="age"  name="age">
+                <input type="number" class="form-control" value="<?=$age?>" id="age"  name="age">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Date of Birth:</label>
             <div class="col-sm-10">
-                <input type="date" class="form-control" id="dob"  name="dob">
+                <input type="date" class="form-control" id="dob"  value="<?=$dob?>"  name="dob">
             </div>
         </div>
-<?php $province = array("Phnom Penh","Kandal","Prey Veng");?>
+        <?php $provinces = array("Phnom Penh","Kandal","Prey Veng");?>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Place of Birth:</label>
             <div class="col-sm-10">
                 <select  class="form-control" id="pob" name="pob">
-                    <?php foreach ($province as $value){ ?>
-                    <option value="<?php echo $value;?>"><?php echo $value;?></option>
+                    <?php foreach ($provinces as $value){ ?>
+                        <option value="<?php echo $value;?>" <?=$pob==$value?"selected":""?>><?php echo $value;?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -75,19 +75,19 @@ $lName = $data['last_name'];
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Salary:</label>
             <div class="col-sm-10">
-                <input type="number"  min="0" value="0" step="any" class="form-control" id="salary"  name="salary">
+                <input type="number"  min="0" step="any" class="form-control" id="salary"  value="<?=$salary?>"  name="salary">
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">Description:</label>
             <div class="col-sm-10">
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <textarea name="description" id="description" class="form-control"><?=$description?></textarea>
             </div>
         </div>
         <div class="form-group">
-            <input type="hidden" name="id" value="<?php echo $_GET['id'];?>">
+            <input type="text" value="<?=$_GET['id']?>" name="id">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-info">UPDATE</button>
+                <button type="submit" class="btn btn-info btn-warning">UPDATE</button>
             </div>
         </div>
     </form>
@@ -95,3 +95,5 @@ $lName = $data['last_name'];
 
 </body>
 </html>
+
+
