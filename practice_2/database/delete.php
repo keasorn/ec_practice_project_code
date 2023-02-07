@@ -8,6 +8,8 @@ if (mysqli_query($conn, $sql)) {
 } else {
     echo "Error deleting record: " . mysqli_error($conn);
 }
+
+
 mysqli_close($conn);
 $newURL = "select.php";
 header('Location: '.$newURL);
